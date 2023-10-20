@@ -1,5 +1,7 @@
 import express from 'express';
 
+import cors from 'cors';
+
 import connectToDb  from './db/mongoose-connection.js';
 
 import userRouter from './routes/users.js';
@@ -13,6 +15,7 @@ await connectToDb();
 
 
 app.use(express.static('public'));
+app.use(cors());
 app.use(express.json());
 app.use('/api/users', userRouter);
 
